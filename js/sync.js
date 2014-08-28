@@ -28,6 +28,9 @@ function sync_listings_start() {
     $.mobile.loading("show");
    //Call sync-push function to grab list of shelters from the external database and insert them into local database
     //Once finished proceed to sync_shelter_list to grab rooms
+	
+	alert("Launching sync...");
+	
     sync_push('da_service', 'getlistings', sync_shelter_list);
 }
 
@@ -37,6 +40,9 @@ function sync_listings_start() {
 function sync_shelter_list() {
     //Call sync-push function to grab list of shelter rooms from the external database and insert them into local database
     //Once finished proceed to sync_shelter_photos to grab photos
+	
+	alert("Sync list of rooms...");
+	
     sync_push('da_shelters', 'getshelters', sync_shelter_photos);
 }
 
@@ -46,6 +52,9 @@ function sync_shelter_list() {
 function sync_shelter_photos() {
     //Call sync-push function to grab list of shelter photos from the external database and insert them into local database
     //Once finished call root_directory_structure function to create all of the directories we will require locally
+	
+	alert("Sync room photos...");
+	
     sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
 }
 
@@ -98,8 +107,14 @@ function root_directory_structure() {
         //Check for local folder "casvaw"
         file_system_root.getDirectory("casvaw", {create:true, exclusive: false}, function() {
             //"casvaw" was created so we now check for "casvaw/tours"
+	
+	alert("Created /casvaw...");
+	
             file_system_root.getDirectory("casvaw/tours", {create:true, exclusive: false}, function() {
                 //"casvaw/tours" was created so we can move on and create any individual shelter folders by calling directory_structure_transact() function
+	
+	alert("Created /casvaw/tours...");
+	
                 directory_structure_transact();
             }, function() {
                 alert("Could not create casvaw/tours...");
@@ -118,6 +133,9 @@ function root_directory_structure() {
 //Start by initializing transaction
 function directory_structure_transact() {
     //Transaction initialized, move on to getting list of shelters
+	
+	alert("Initialize directory listing retrieval...");
+	
     db.transaction(get_directory_structure, transactionError);
 }
 
@@ -127,6 +145,9 @@ function directory_structure_transact() {
 function get_directory_structure(tx) {
     var sql = "SELECT DISTINCT id_shelter FROM da_shelter_images ORDER BY id_shelter";
     //Once shelters are collected we want to assign the results to a global object/array 
+	
+	alert("Grabbing list of unique shelters...");
+	
     tx.executeSql(sql, [], assign_directory_array);
 }
 
