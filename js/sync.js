@@ -102,7 +102,13 @@ function sync_push(tblname, action, callback) {
  * Set up root folders on local device
  */
 function root_directory_structure() {
+	
+	alert("Build root structure...");
+	
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+	
+	alert("Got file system root...");
+	
         var file_system_root = fileSystem.root;
         //Check for local folder "casvaw"
         file_system_root.getDirectory("casvaw", {create:true, exclusive: false}, function() {
