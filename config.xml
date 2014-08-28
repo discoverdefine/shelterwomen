@@ -9,9 +9,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <!-- Security permissions required -->
-    <feature name="http://api.phonegap.com/1.0/file" required="true" />
-    <feature name="http://api.phonegap.com/1.0/network" required="true" />
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.console" />
     <gap:plugin name="org.apache.cordova.device" />
