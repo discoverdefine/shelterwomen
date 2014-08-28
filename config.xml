@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.discoverdefine.shelterwomen" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.discoverdefine.shelterwomen" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Shelter for Women</name>
     <description>
         A directory of women's shelters and resources utilized by social workers to educate women in need.
@@ -9,6 +9,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <!-- Security permissions required -->
+    <feature name="http://api.phonegap.com/1.0/file" required="true" />
+    <feature name="http://api.phonegap.com/1.0/network" required="true" />
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.console" />
     <gap:plugin name="org.apache.cordova.device" />
