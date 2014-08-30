@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+    Initializes app and creates database tables if they don't already exist.
+    Lists directory of shelters/resources.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.css" />
+        <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile.theme-classic.css" />
+        <title>Shelter for Women</title>
+    </head>
+    <body>
+        
+        <div data-role="page" data-fullscreen="true" data-theme="c">
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <a href="about.html" data-ajax="false" data-transition="flow" data-icon="info">About</a>
+                <h1>Shelter for Women</h1>
+                <a href="help.html" data-ajax="false" data-transition="flow" data-icon="gear" data-iconpos="right">Help</a>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="index.html" data-ajax="false" data-transition="flow" data-icon="search" data-theme="b" class="ui-btn-active">Directory</a></li>
+                        <li><a href="tours.html" data-ajax="false" data-transition="flow" data-icon="grid" data-theme="a">Tours</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div role="main" class="ui-content">
+            <div data-role="content" class="ui-corner-bottom ui-content" id="service_details"></div>
+                <a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-right">Return to Directory</a>
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/libs/jquery/jquery.js"></script>
+        <script src="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.js"></script>
+        <script src="js/libs/purl/purl.js"></script>
+        <script src="js/directory_details.js"></script>
+        <script type="application/javascript" src="js/fastclick.js"></script>
+        <script type="application/javascript">
+            $(function() {
+                FastClick.attach(document.body);
+            });
+        </script>
+   </body>
+</html>
