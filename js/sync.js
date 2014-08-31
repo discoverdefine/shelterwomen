@@ -11,9 +11,14 @@ function onDeviceReady() {
 }
 
 $(document).on('pageinit', function(){
-    $('#btncleanup').click(function() {
+    $('#btndisplaydiv').click(function() {
+		document.getElementById(photo_download_progress).style.display = "block";
+    });
+	/*
+	$('#btncleanup').click(function() {
         remove_directory();
     });
+	*/
     $('#btnsync').click(function() {
         sync_listings_start();
     });
@@ -29,7 +34,7 @@ function sync_listings_start() {
    //Call sync-push function to grab list of shelters from the external database and insert them into local database
     //Once finished proceed to sync_shelter_list to grab rooms
 	
-	alert("Launching sync...");
+	//alert("Launching sync...");
 	
     sync_push('da_service', 'getlistings', sync_shelter_list);
 }
@@ -41,7 +46,7 @@ function sync_shelter_list() {
     //Call sync-push function to grab list of shelter rooms from the external database and insert them into local database
     //Once finished proceed to sync_shelter_photos to grab photos
 	
-	alert("Sync list of rooms...");
+	//alert("Sync list of rooms...");
 	
     sync_push('da_shelters', 'getshelters', sync_shelter_photos);
 }
@@ -53,7 +58,7 @@ function sync_shelter_photos() {
     //Call sync-push function to grab list of shelter photos from the external database and insert them into local database
     //Once finished call root_directory_structure function to create all of the directories we will require locally
 	
-	alert("Sync room photos...");
+	//alert("Sync room photos...");
 	
     sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
 }
@@ -103,23 +108,23 @@ function sync_push(tblname, action, callback) {
  */
 function root_directory_structure() {
 	
-	alert("Build root structure...");
+	//alert("Build root structure...");
 	
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 	
-	alert("Got file system root...");
+	//alert("Got file system root...");
 	
         var file_system_root = fileSystem.root;
         //Check for local folder "casvaw"
         file_system_root.getDirectory("casvaw", {create:true, exclusive: false}, function() {
             //"casvaw" was created so we now check for "casvaw/tours"
 	
-	alert("Created /casvaw...");
+	//alert("Created /casvaw...");
 	
             file_system_root.getDirectory("casvaw/tours", {create:true, exclusive: false}, function() {
                 //"casvaw/tours" was created so we can move on and create any individual shelter folders by calling directory_structure_transact() function
 	
-	alert("Created /casvaw/tours...");
+	//alert("Created /casvaw/tours...");
 	
                 directory_structure_transact();
             }, function() {
@@ -140,7 +145,7 @@ function root_directory_structure() {
 function directory_structure_transact() {
     //Transaction initialized, move on to getting list of shelters
 	
-	alert("Initialize directory listing retrieval...");
+	//alert("Initialize directory listing retrieval...");
 	
     db.transaction(get_directory_structure, transactionError);
 }
@@ -152,7 +157,7 @@ function get_directory_structure(tx) {
     var sql = "SELECT DISTINCT id_shelter FROM da_shelter_images ORDER BY id_shelter";
     //Once shelters are collected we want to assign the results to a global object/array 
 	
-	alert("Grabbing list of unique shelters...");
+	//alert("Grabbing list of unique shelters...");
 	
     tx.executeSql(sql, [], assign_directory_array);
 }
