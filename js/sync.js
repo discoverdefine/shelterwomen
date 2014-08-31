@@ -11,8 +11,13 @@ function onDeviceReady() {
 }
 
 $(document).on('pageinit', function(){
-    $('#btndisplaydiv').click(function() {
+    $('#btndisplaydiv').click(function(iProgress) {
 		document.getElementById('photo_download_progress').style.display = "block";
+		document.getElementById('photo_download_progress').css({
+			background: "-webkit-gradient(linear, left top, right top, from(#d7f0a2), to(#ffffff))"}).css({
+			background: "-moz-linear-gradient(left, #d7f0a2 0%, #ffffff 100%)"});
+		
+		
     });
 	/*
 	$('#btncleanup').click(function() {

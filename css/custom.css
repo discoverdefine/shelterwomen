@@ -1,6 +1,6 @@
 #photo_download_progress {
     border: 1px solid #cecece;
     display: none;
-    padding: 0px 4px;
+    padding: 4px 0px;
     text-align: center;
 }
