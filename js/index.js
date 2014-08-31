@@ -2,6 +2,17 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     console.log("Device is ready on index page");
+	
+	
+
+var alertBox = Ext.Msg.alert("Alert","How are you?");
+setTimeout(function(){
+   alertBox.hide();
+}, 
+5000);
+
+
+	
     createToursTables();
     createDirectoryTables();
     
@@ -72,17 +83,6 @@ function populateDirectoryListview() {
 }
 
 function getListings_success(tx, results) {
-	
-	
-
-var alertBox = Ext.Msg.alert("Alert","How are you?");
-setTimeout(function(){
-   alertBox.hide();
-}, 
-5000);
-
-
-	
     var len = results.rows.length;
     $("#lst_directory_listview").empty();
     for (var i = 0; i < len; i++) {
