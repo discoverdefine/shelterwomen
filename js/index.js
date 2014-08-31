@@ -3,18 +3,9 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     console.log("Device is ready on index page");
 	
-	
-navigator.notification.alert("Testing notifications");
-setTimeout(navigator.notification.hide, 10000);
-
 /*
- var alertBox = Ext.Msg.alert("Alert","How are you?");
-setTimeout(function(){
-   alertBox.hide();
-}, 
-5000);
+navigator.notification.alert("Testing notifications");
 */
-
 	
     createToursTables();
     createDirectoryTables();
