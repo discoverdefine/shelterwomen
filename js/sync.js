@@ -13,7 +13,7 @@ function onDeviceReady() {
 $(document).on('pageinit', function(){
     $('#btndisplaydiv').click(function(iProgress) {
 		document.getElementById('photo_download_progress').style.display = "block";
-		document.getElementById('photo_download_progress').style.background = "linear-gradient(to right, rgba(0,192,0,0) 10%, rgba(255,255,255,0) 90%)";
+		document.getElementById('photo_download_progress').style.background = "-webkit-linear-gradient(top, #fff, #000)";
 		
 		/*
 		document.getElementById('photo_download_progress').css({
