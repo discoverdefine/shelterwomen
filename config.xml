@@ -9,6 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <icon src="img/icon.png" />
     <!-- Security permissions required -->
     <feature name="http://api.phonegap.com/1.0/file" required="true" />
     <feature name="http://api.phonegap.com/1.0/network" required="true" />
