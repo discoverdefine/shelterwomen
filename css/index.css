@@ -113,14 +113,3 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
-
-#photo_download_progress {
-    border: 1px solid #cecece;
-    display: block;
-    font-size: 80%;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-}
