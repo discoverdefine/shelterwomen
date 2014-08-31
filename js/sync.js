@@ -12,7 +12,7 @@ function onDeviceReady() {
 
 $(document).on('pageinit', function(){
     $('#btndisplaydiv').click(function() {
-		document.getElementById(photo_download_progress).style.display = "block";
+		document.getElementById('photo_download_progress').style.display = "block";
     });
 	/*
 	$('#btncleanup').click(function() {
