@@ -13,8 +13,11 @@ function onDeviceReady() {
 $(document).on('pageinit', function(){
     $('#btndisplaydiv').click(function(iProgress) {
 		document.getElementById('photo_download_progress').style.display = "block";
+		document.getElementById('photo_download_progress').style.background = "-webkit-repeating-linear-gradient(left, #d7f0a2, #d7f0a2 10%, #ffffff 10%, #ffffff 100%)";
+		/*
 		document.getElementById('photo_download_progress').style.background = "-webkit-linear-gradient(left, #d7f0a2, #d7f0a2 10%, #ffffff 90%)";
 		document.getElementById('photo_download_progress').style.background = "linear-gradient(to right, #990000, #990000 15%, #ffffff 15%, #ffffff 85%, #990000 85%)";
+		*/
 		
 		/*
 		document.getElementById('photo_download_progress').css({
