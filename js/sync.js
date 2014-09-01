@@ -247,7 +247,7 @@ function assign_photo_array(tx, results) {
     //Identify the total number of photos returned
     i_untouched_photo_rows = a_photo_list.rows.length;
 	i_progress_min = 0;
-    i_progress_max = i_untouched_photo_rows;
+    i_progress_max = i_untouched_photo_rows + 1;
     //Call download_file function to loop through and download photos one at a time
     download_file();
 }
