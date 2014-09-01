@@ -12,20 +12,6 @@ function onDeviceReady() {
 
 $(document).on('pageinit', function(){
     $('#btndisplaydiv').click(function(iProgress) {
-		document.getElementById('photo_download_progress').style.display = "block";
-		document.getElementById('photo_download_progress').style.background = "-webkit-repeating-linear-gradient(left, #d7f0a2, #d7f0a2 10%, #ffffff 10%, #ffffff 100%)";
-		/*
-		document.getElementById('photo_download_progress').style.background = "-webkit-linear-gradient(left, #d7f0a2, #d7f0a2 10%, #ffffff 90%)";
-		document.getElementById('photo_download_progress').style.background = "linear-gradient(to right, #990000, #990000 15%, #ffffff 15%, #ffffff 85%, #990000 85%)";
-		*/
-		
-		/*
-		document.getElementById('photo_download_progress').css({
-		
-		
-			background: "-webkit-gradient(linear, left top, right top, from(#d7f0a2), to(#ffffff))"}).css({
-			background: "-moz-linear-gradient(left, #d7f0a2 0%, #ffffff 100%)"});
-		*/
 		
     });
 	/*
@@ -35,11 +21,22 @@ $(document).on('pageinit', function(){
 	*/
     $('#btnsync').click(function() {
         sync_listings_start();
-    });
+    	document.getElementById('photo_download_progress').style.display = "block";
+	});
 });
 
-
 /*
+ * Displays and updates field download progress bar
+ */
+function file_download_progress(i_file, total_files) {
+	//Calculate percentage complete
+	var percent_start = ((i_file / total_files) * 100).toFixed(2);
+	//Change progress bar to reflect current percentage
+	document.getElementById('photo_download_progress').style.background = "-webkit-repeating-linear-gradient(left, #d7f0a2, #d7f0a2 " + percent_start + "%, #ffffff " + percent_start + "%, #ffffff 100%)";
+}
+
+
+
 * Kicks off the whole shibang, starting with importing a list of shelters
 */
 function sync_listings_start() {
@@ -248,6 +245,8 @@ function assign_photo_array(tx, results) {
     a_photo_list = results;
     //Identify the total number of photos returned
     i_untouched_photo_rows = a_photo_list.rows.length;
+	i_progress_min = 0;
+    i_progress_max = i_untouched_photo_rows;
     //Call download_file function to loop through and download photos one at a time
     download_file();
 }
@@ -292,24 +291,44 @@ function download_file(tx, results) {
         var local_file_full_path = nativeLocalRootPath + local_file_path;
         //Check for existence of photo on local server
         fileSystem.root.getFile(local_file_full_path, {create: true, exclusive: false}, function() {
-            //File already exists so we just need to restart the download_file() to do it all again until we run out of records
+            
+			//Set start and end amounts for progress meter
+			i_progress_min++;
+			file_download_progress(i_progress_min, i_progress_max);
+			
+			//File already exists so we just need to restart the download_file() to do it all again until we run out of records
             download_file();
         }, function() {
             //File not found locally so we need to download it
             var ft = new FileTransfer(); //Initialize file transfer object
             ft.download(remote_file_path, local_file_full_path, function(entry) {
-                //File was successfully downloaded so we can restart the download_file() to do it all again until we run out of records
+            
+				//Set start and end amounts for progress meter
+				i_progress_min++;
+				file_download_progress(i_progress_min, i_progress_max);
+				
+		        //File was successfully downloaded so we can restart the download_file() to do it all again until we run out of records
                 download_file();
             }, function() {
                 //Could not download file for some reason but we still want to continue on by restarting the download_file()
                 alert("Unable to download " + remote_file_path);
-                download_file();
+            
+				//Set start and end amounts for progress meter
+				i_progress_min++;
+				file_download_progress(i_progress_min, i_progress_max);
+			
+		        download_file();
             });
         });
     }, function() {
         //Could not connect for some reason but we still want to continue on by restarting the download_file()
         alert("Unable to connect with LocalFileSystem at: " + v_id_shelter);
-        download_file();
+            
+		//Set start and end amounts for progress meter
+		i_progress_min++;
+		file_download_progress(i_progress_min, i_progress_max);
+			
+		download_file();
     });
 }
 
