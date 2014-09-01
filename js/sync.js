@@ -20,9 +20,9 @@ $(document).on('pageinit', function(){
     });
 	*/
     $('#btnsync').click(function() {
-        sync_listings_start();
     	document.getElementById('photo_download_progress').style.display = "block";
-	});
+	    sync_listings_start();
+    });
 });
 
 /*
@@ -36,7 +36,7 @@ function file_download_progress(i_file, total_files) {
 }
 
 
-
+/*
 * Kicks off the whole shibang, starting with importing a list of shelters
 */
 function sync_listings_start() {
