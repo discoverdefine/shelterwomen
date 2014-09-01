@@ -32,6 +32,7 @@ function file_download_progress(i_file, total_files) {
 	//Calculate percentage complete
 	var percent_start = ((i_file / total_files) * 100).toFixed(2);
 	//Change progress bar to reflect current percentage
+	document.getElementById('photo_download_progress').innerHTML = "File " + i_file + " of " + total_files
 	document.getElementById('photo_download_progress').style.background = "-webkit-repeating-linear-gradient(left, #d7f0a2, #d7f0a2 " + percent_start + "%, #ffffff " + percent_start + "%, #ffffff 100%)";
 }
 
