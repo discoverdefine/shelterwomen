@@ -27,11 +27,12 @@ function func_too_legit() {
 alert("Too legit...");
 	
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-alert("Path: " + fileSystem.root + "casvaw/activation.key");
+		file_friendly_root = fileSystem.root.toURL();
+alert("Path: " + file_friendly_root + "casvaw/activation.key");
 		fileSystem.root.getFile("casvaw/activation.key", {create: false, exclusive: false}, function() {
 alert("Found the file?");
 			//If file exists then grab the activation key and compare it to the one on the server
-			fileSystem.root + "casvaw/activation.key".file(function(file) {
+			file_friendly_root + "casvaw/activation.key".file(function(file) {
 				var reader = new FileReader();
 				reader.onloadend = function(e) {
 					alert(this.result);
