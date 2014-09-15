@@ -5,7 +5,21 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	alert("Alert the guard!");
-    func_alert_the_guard();
+    func_too_legit();
+}
+
+function set_root_directory() {	
+	//alert("Create root folder if needed...");	
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+		//alert("Got file system root...");
+        var file_system_root = fileSystem.root;
+        //Check for local folder "casvaw" and create it if it doesn't exist
+        file_system_root.getDirectory("casvaw", {create:true, exclusive: false}, function() {
+            //Folder exists or was created
+		}, function() {
+            alert("Could not create casvaw...");
+        });
+	});
 }
 
 //Checks to see if activation key has been saved locally and if so, retrieves it, otherwise redirects to activation screen
@@ -13,8 +27,8 @@ function func_too_legit() {
 	//Get the root for the local server
     nativeLocalRootPath = fileSystem.root.toURL();
     //Build full path to activation key file from the root down
-    var local_file_full_path = nativeLocalRootPath + "casvaw/activation.key";
-    //Check for existence of activation key file on local server
+    var local_file_full_path = nativeLocalRootPath + "casvaw/activation.key";	
+	//Check for existence of activation key file on local server
     fileSystem.root.getFile(local_file_full_path, {create: false, exclusive: false}, function() {
 		//If file exists then grab the activation key and compare it to the one on the server
 		local_file_full_path.file(function(file) {
