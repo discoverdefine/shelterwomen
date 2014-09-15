@@ -10,12 +10,14 @@ function onDeviceReady() {
 
 function func_alert_the_guard(act_key) {
 	alert("Woke the guard...");
-
+	
+	act_key = "f84868ae448b0e0b558e4c46a195a76b";
+	
 	var request = $.ajax({
 		url: "https://shelterforwomen.ca/admin/api.php",
 		type: "POST",
 		data: { action: "validate", key: api_key, activation_key: act_key },
-		dataType: "html"
+		dataType: "text"
 	});
 	
 	request.done(function( msg ) {
