@@ -6,7 +6,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	alert("Check you out");
     $(document).on('click', '#submit', function() { // catch the form's submit event
-		if ($('#sync_key').val().length > 0) {
+		if ( $('#sync_key').val().length > 0 ) {
 			// Send data to server through the ajax call
 			// action is functionality we want to call and outputJSON is our data
 				$.ajax({url: 'https://shelterforwomen.ca/admin/api.php',
@@ -23,11 +23,11 @@ function onDeviceReady() {
 					
 					beforeSend: function() {
 						// This callback function will trigger before data is sent
-						$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+						$.mobile.loading("show"); // This will show ajax spinner
 					},
 					complete: function() {
 						// This callback function will trigger on data sent/received complete
-						$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
+						$.mobile.loading("hide"); // This will hide ajax spinner
 					},
 					success: function (result) {
 						if(result.status) {
@@ -41,7 +41,8 @@ function onDeviceReady() {
 						alert('Error: ' + error);
 					}
 				});                  
-		} else {
+		}
+		else {
 			alert('Please fill all necessary fields');
 		}          
 		return false; // cancel original event to prevent form submitting
