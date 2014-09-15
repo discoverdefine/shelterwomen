@@ -39,13 +39,14 @@ alert("Found the file?");
 					//console.log("Text is: "+this.result);
 					//document.querySelector("#textArea").innerHTML = this.result;
 				}
-			reader.readAsText(file);
+				reader.readAsText(file);
 			}, function() {
-alert("No file");
-				//If file doesn't exist, the user has not activated their app so redirect them to the activation page
-				window.location.href="activate.html";
-				return; //Added just to be safe
+				alert("Unable to access activation file.");
 			});
+		}, function() {
+			//If file doesn't exist, the user has not activated their app so redirect them to the activation page
+			window.location.href="activate.html";
+			return; //Added just to be safe
 		});
 	});
 };
