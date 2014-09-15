@@ -29,7 +29,7 @@ alert("Too legit...");
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 		file_friendly_root = fileSystem.root.toURL();
 alert("Path: " + file_friendly_root + "casvaw/activation.key");
-		fileSystem.root.getFile("casvaw/activation.key", {create: false, exclusive: false}, function() {
+		fileSystem.root.getFile(file_friendly_root + "casvaw/activation.key", {create: false, exclusive: false}, function() {
 alert("Found the file?");
 			//If file exists then grab the activation key and compare it to the one on the server
 			file_friendly_root + "casvaw/activation.key".file(function(file) {
