@@ -24,10 +24,12 @@ function set_root_directory() {
 
 //Checks to see if activation key has been saved locally and if so, retrieves it, otherwise redirects to activation screen
 function func_too_legit() {
+alert("Too legit...");
 	//Get the root for the local server
     nativeLocalRootPath = fileSystem.root.toURL();
     //Build full path to activation key file from the root down
     var local_file_full_path = nativeLocalRootPath + "casvaw/activation.key";	
+alert("Path: " + local_file_full_path);
 	//Check for existence of activation key file on local server
     fileSystem.root.getFile(local_file_full_path, {create: false, exclusive: false}, function() {
 		//If file exists then grab the activation key and compare it to the one on the server
