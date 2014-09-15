@@ -8,11 +8,14 @@ function onDeviceReady() {
 }
 
 function func_alert_the_guard(activation_key) {
-	$.ajax({
-		url: 'https://shelterforwomen.ca/admin/api.php?action=validate&key=' + api_key + '&activation_key=' + $activation_key,
-		success: function(result) {
-			alert(result);
-		}		
+    $.ajax({
+        url: 'https://shelterforwomen.ca/admin/api.php?action=validate&key=' + api_key + '&activation_key=' + $activation_key,
+		async: true,
+        dataType: "text"
+    }).done(function(response) {
+		
+		alert(response);
+
     });
 }
 
