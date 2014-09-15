@@ -9,11 +9,27 @@ function onDeviceReady() {
 }
 
 function func_alert_the_guard(act_key) {
-	tmp_url = "https://shelterforwomen.ca/admin/api.php";
+	alert("Woke the guard...");
+
+	var request = $.ajax({
+		url: "https://shelterforwomen.ca/admin/api.php",
+		type: "POST",
+		data: { action: "validate", key: api_key, activation_key: act_key },
+		dataType: "html"
+	});
+	
+	request.done(function( msg ) {
+		alert("Response: " + msg);
+	});
+	
+	request.fail(function( jqXHR, textStatus ) {
+		alert( "Request failed: " + textStatus );
+	});
+	
 	//tmp_data = "action=validate&key=" + api_key + "&activation_key=" + activation_key;
 	//tmp_data = { action:"validate", key: api_key, activation_key: activation_key };
-	alert("Woke the guard...");
-    $.post(
+    /*
+	$.post(
         tmp_url,
 		{
 			action: "validate",
@@ -24,6 +40,8 @@ function func_alert_the_guard(act_key) {
 			alert("Response: " + response);
 		}
 	);
+	*/
+	
 };
 
 function transactionError() {
