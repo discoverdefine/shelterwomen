@@ -1,11 +1,15 @@
+window.addEventListener('load', onWindowLoaded, false);
 document.addEventListener('deviceready', onDeviceReady, false);
 
-function onDeviceReady() {
-    console.log("Device is ready on index page");
+function onWindowLoaded() {
     createSecurityTable();
     createToursTables();
     createDirectoryTables();
     checkActive();
+}
+
+function onDeviceReady() {
+
 }
 
 function createSecurityTable() {
