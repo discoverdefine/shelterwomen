@@ -21,15 +21,21 @@
                 <h1 id="app-title">Shelter for Women</h1>
             </div>
             <div role="main" class="ui-content">
-                <form id="check-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false" method="post" action="help.html">
-                    <fieldset>
-                        <div data-role="fieldcontain">
-                            <label for="sync_key">Activation Code:</label>
-                            <input type="text" value="" name="sync_key" id="sync_key"/>
-                        </div>                                 
-                       <input type="submit" data-theme="b" name="submit" id="submit" value="Submit">
-                    </fieldset>
-                </form>
+                
+                <div class="vertical-aligner-box-thingy">
+                    <span class="vertical-aligner-liner">
+                        <form id="activate-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false" method="post" action="help.html">
+                            <fieldset>
+                                <div data-role="fieldcontain">
+                                    <label for="sync_key">Activation Code:</label>
+                                    <input type="text" value="" name="sync_key" id="sync_key"/>
+                                </div>                                 
+                               <input type="submit" data-theme="b" name="submit" id="submit" value="Submit">
+                            </fieldset>
+                        </form>
+                    </span>
+                </div>
+                
             </div>
         </div>
         <script src="cordova.js"></script>
