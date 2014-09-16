@@ -11,30 +11,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
         <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile.theme-classic.css" />
+        <link rel="stylesheet" href="css/custom.css" />
         <title>Shelter for Women</title>
     </head>
     <body>
         
         <div data-role="page" data-fullscreen="true" data-theme="c">
             <div data-role="header" data-theme="a" data-position="fixed">
-                <a href="about.html" data-ajax="false" data-transition="flow" data-icon="info">About</a>
-                <h1>Shelter for Women</h1>
-                <a href="help.html" data-ajax="false" data-transition="flow" data-icon="gear" data-iconpos="right">Help</a>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="index.html" data-ajax="false" data-transition="flow" data-icon="search" data-theme="b" class="ui-btn-active">Directory</a></li>
-                        <li><a href="tours.html" data-ajax="false" data-transition="flow" data-icon="grid" data-theme="a">Tours</a></li>
-                    </ul>
-                </div>
+                <h1 id="app-title">Shelter for Women</h1>
             </div>
             <div role="main" class="ui-content">
-                <ul data-role="listview" data-inset="true" id="lst_directory_listview"></ul>
+                <form id="check-user" class="ui-body ui-body-a ui-corner-all" data-ajax="false" method="post" action="help.html">
+                    <fieldset>
+                        <div data-role="fieldcontain">
+                            <label for="sync_key">Access Code:</label>
+                            <input type="text" value="" name="sync_key" id="sync_key"/>
+                        </div>                                 
+                       <input type="submit" data-theme="b" name="submit" id="submit" value="Submit">
+                    </fieldset>
+                </form>
             </div>
         </div>
         <script src="cordova.js"></script>
         <script src="js/libs/jquery/jquery.js"></script>
         <script src="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.js"></script>
-        <script src="js/authorize.js"></script>
         <script src="js/index.js"></script>
         <script type="application/javascript" src="js/fastclick.js"></script>
         <script type="application/javascript">

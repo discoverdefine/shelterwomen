@@ -7,6 +7,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
         <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" href="js/libs/jquery.mobile/jquery.mobile.theme-classic.css" />
@@ -28,15 +29,14 @@
                 </div>
             </div>
             <div role="main" class="ui-content">
-            <div data-role="content" class="ui-corner-bottom ui-content" id="service_details"></div>
-                <a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-right">Return to Directory</a>
+                <ul data-role="listview" data-inset="true" id="lst_directory_listview"></ul>
             </div>
         </div>
         <script src="cordova.js"></script>
         <script src="js/libs/jquery/jquery.js"></script>
         <script src="js/libs/jquery.mobile/jquery.mobile-1.4.0.min.js"></script>
-        <script src="js/libs/purl/purl.js"></script>
-        <script src="js/directory_details.js"></script>
+        <script src="js/authorize.js"></script>
+        <script src="js/index.js"></script>
         <script type="application/javascript" src="js/fastclick.js"></script>
         <script type="application/javascript">
             $(function() {
