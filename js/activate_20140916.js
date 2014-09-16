@@ -15,31 +15,16 @@ function getActive() {
 	if ( $('#email').val().length > 0 && $('#sync_key').val().length > 0 ) {
 		
 	alert('Email: ' + $('#email').val());
-	alert('Sync Key: ' + $('#sync_key').val());
+	alert('Sync Key: ' + $('#sync_key').val());	
 		
 		// Send data to server through the ajax call
 		// action is functionality we want to call and outputJSON is our data
-		$.ajax({
-			url: 'https://shelterforwomen.ca/admin/api.php?action=activate&key=' + api_key + '&sync_key=' + $('#sync_key').val() + '&email=' + $('#email').val(),
+		$.ajax({url: 'https://shelterforwomen.ca/admin/api.php',
 			//data: {action : 'activate', formData : $('#activate-user').serialize()},
-			//data: {action : 'activate', formData : $('#activate-user').serialize()},
-			//type: 'post',                  
+			data: {action : 'activate', formData : $('#activate-user').serialize()},
+			type: 'post',                  
 			async: 'true',
-			dataType: 'json'
-		}).done( function(data) {
-				
-			if ( data.status ) {
-				alert(data.sync_key);
-				alert(data.activation_key);
-			}
-			else {
-				alert("Activation failed");
-			}
-			
-		});
-	}
-		
-			/*
+			dataType: 'json',
 			beforeSend: function() {
 				// This callback function will trigger before data is sent
 				$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
@@ -65,15 +50,12 @@ function getActive() {
 				// This callback function will trigger on unsuccessful action               
 				alert('Network error has occurred please try again!');
 			}
-		});
-		*/
-		
+		});                  
+	}
 	else {
 		alert('Please fill all necessary fields');
-	}
-	
-	return false; // cancel original event to prevent form submitting		
-	
+	}          
+	return false; // cancel original event to prevent form submitting
 }
 
 
