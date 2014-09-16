@@ -40,11 +40,11 @@ function getActive() {
 			
 			alert('Got a response');
 			
-				a_activate_response = json_decode(activate_response, true); // decode
+				//a_activate_response = json_decode(activate_response, true); // decode
 			
-				b_is_array = a_activate_response.isArray();
+				//b_is_array = a_activate_response.isArray();
 			
-			alert("Is array: " + b_is_array);
+			//alert("Is array: " + b_is_array);
 			
 				//if ( data.status ) {
 					//alert(data.sync_key);
