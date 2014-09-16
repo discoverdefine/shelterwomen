@@ -9,7 +9,7 @@ function onWindowLoaded() {
 }
 
 function onDeviceReady() {
-
+    $.mobile.showPageLoadingMsg(true);
 }
 
 function createSecurityTable() {

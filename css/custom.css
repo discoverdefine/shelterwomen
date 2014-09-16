@@ -4,20 +4,9 @@ body {
 
 .splash-back {
     background-color: #000000;
-    background-image: url('../logo.png');
+    background-image: url('../img/logo_background_200x200.png');
     background-position: 50% 50%;
     background-repeat: no-repeat;
-}
-
-.splash-div {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    width: 170px;
-    height: 200px;
-    margin-left: -85px; /*half width*/
-    margin-top: -100px; /*half height*/
 }
 
 #photo_download_progress {
