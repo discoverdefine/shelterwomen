@@ -33,13 +33,16 @@ function getActive() {
 				$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
 			},
 			success: function (result) {
-	alert('We have contact...');
-				if ( result.activation_key != "" ) {
-					alert("Activation Key: " + result.activation_key + "\nSync Key: " + result.sync_key);
+	
+				if ( result.status ) {
+	
+					alert('We have contact...');
+	
 				}
 				else {
-					alert('Logon unsuccessful!');
+					alert('Activation failed');
 				}
+				
 			},
 			error: function (request,error) {
 				// This callback function will trigger on unsuccessful action               
