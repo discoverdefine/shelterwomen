@@ -5,7 +5,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	
-	$('#btnActivate').bind('tap',getActive);
+	getActive();
+	
+	//$('#btnActivate').bind('tap',getActive);
 	
 }
 
