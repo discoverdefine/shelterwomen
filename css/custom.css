@@ -30,16 +30,3 @@ body {
 #app-title {
     font-size: 0.8em;
 }
-
-.vertical-aligner-box-thingy {
-    padding: 0;
-    width: 100%;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.vertical-aligner-liner {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
