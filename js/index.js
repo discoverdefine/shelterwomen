@@ -1,14 +1,11 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
-//Running functions before page load to handle possible redirect
-createSecurityTable();
-createToursTables();
-createDirectoryTables();
-checkActive();
-
 function onDeviceReady() {
     console.log("Device is ready on index page");
-
+    createSecurityTable();
+    createToursTables();
+    createDirectoryTables();
+    checkActive();
 }
 
 function createSecurityTable() {
