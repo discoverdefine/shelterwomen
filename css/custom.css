@@ -1,3 +1,19 @@
+.splash-back {
+    background-color: #000000;
+}
+
+.splash-div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    background-image: url('logo.png');
+    width: 170px;
+    height: 200px;
+    margin-left: -85px; /*half width*/
+    margin-top: -100px; /*half height*/
+}
+
 #photo_download_progress {
     border: 1px solid #cecece;
     display: none;
