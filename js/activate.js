@@ -42,7 +42,7 @@ function getActive() {
 			
 				a_activate_response = json_decode(activate_response, true); // decode
 			
-			b_is_array.isArray() = a_activate_response;
+				b_is_array = a_activate_response.isArray();
 			
 			alert("Is array: " + b_is_array);
 			
