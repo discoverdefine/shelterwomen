@@ -29,7 +29,7 @@ function getActive() {
 			//data: {action : 'activate', formData : $('#activate-user').serialize()},
 			//type: 'post',                  
 			async: 'true',
-			dataType: 'json',
+			//dataType: 'json',
 			beforeSend: function() {
 				// This callback function will trigger before data is sent
 				$.mobile.loading("show"); // This will show ajax spinner
