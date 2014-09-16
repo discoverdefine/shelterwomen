@@ -1,5 +1,7 @@
 .splash-back {
     background-color: #000000;
+    background-image: url('../logo.png');
+    background-position: 50% 50%;
 }
 
 .splash-div {
