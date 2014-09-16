@@ -8,7 +8,12 @@ function onDeviceReady() {
 }
 
 $(document).on('click', '#submit', function() { // catch the form's submit event
-	if ( $('#sync_key').val().length > 0 ){
+	
+	alert('Submitting form...');
+	alert('Email: ' + $('#email').val());
+	alert('Sync Key: ' + $('#sync_key').val());
+	
+	if ( $('#email').val().length > 0 && $('#sync_key').val().length > 0 ){
 		// Send data to server through the ajax call
 		// action is functionality we want to call and outputJSON is our data
 			$.ajax({url: 'https://shelterforwomen.ca/admin/api.php',
