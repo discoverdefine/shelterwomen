@@ -10,7 +10,7 @@ function onDeviceReady() {
 }
 
 function getActive() {
-	alert('Submitting form...');
+	//alert('Submitting form...');
 	
 	v_email = $('#email').val();
 	v_sync_key = $('#sync_key').val();
@@ -18,14 +18,18 @@ function getActive() {
 	//if ( $('#email').val().length > 0 && $('#sync_key').val().length > 0 ) {
 	if ( v_email.length > 0 && v_sync_key.length > 0 ) {
 		
-	alert('Email: ' + v_email);
-	alert('Sync Key: ' + v_sync_key);
+	//alert('Email: ' + v_email);
+	//alert('Sync Key: ' + v_sync_key);
 		
 		// Send data to server through the ajax call
 		// action is functionality we want to call and outputJSON is our data
 		$.ajax({
 			url: 'https://shelterforwomen.ca/admin/api.php?action=activate&key=' + api_key + '&sync_key=' + v_sync_key + '&email=' + v_email,
 			async: 'true',
+			
+			type : "GET",
+			dataType: 'json',
+			
 			beforeSend: function() {
 				// This callback function will trigger before data is sent
 				$.mobile.loading("show"); // This will show ajax spinner
@@ -34,7 +38,9 @@ function getActive() {
 				// This callback function will trigger on data sent/received complete
 				$.mobile.loading("hide"); // This will hide ajax spinner
 			}
-		}).done( function(activate_response) {
+		})
+		
+		.done( function(activate_response) {
 			
 			//if ( !empty(activate_response) ) {
 			
