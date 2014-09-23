@@ -1,53 +1,37 @@
 var db;
 var api_key = 'ad37743918e82143d5c18f072e932d4f';
-
-document.addEventListener("deviceready", onDeviceReady, false);
+var authorize_key_sync;
+var authorize_key_activation;
 
 function onDeviceReady() {
 	//alert("Alert the guard!");
     //func_too_legit();
 }
 
-function set_root_directory() {	
-	//alert("Create root folder if needed...");	
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-		//alert("Got file system root...");
-        var file_system_root = fileSystem.root;
-        //Check for local folder "casvaw" and create it if it doesn't exist
-        file_system_root.getDirectory("casvaw", {create:true, exclusive: false}, function() {
-            //Folder exists or was created
-		}, function() {
-            alert("Could not create casvaw...");
-        });
-	});
-}
-
 //Checks to see if activation key has been saved locally and if so, retrieves it, otherwise redirects to activation screen
 function func_too_legit() {
-alert("Too legit...");
-	
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-		file_friendly_root = fileSystem.root.toURL();
-		fileSystem.root.getFile(file_friendly_root + "casvaw/activation.key", {create: false, exclusive: false}, function() {
-alert("Found the file");
-			//If file exists then grab the activation key and compare it to the one on the server
-			file_friendly_root + "casvaw/activation.key".file(function(file) {
-				var reader = new FileReader();
-				reader.onloadend = function(e) {
-					alert(this.result);
-					//console.log("Text is: "+this.result);
-					//document.querySelector("#textArea").innerHTML = this.result;
-				}
-				reader.readAsText(file);
-			}, function() {
-				alert("Unable to access activation file.");
-			});
-		}, function() {
-			//If file doesn't exist, the user has not activated their app so redirect them to the activation page
-			window.location.href="activate.html";
-			return; //Added just to be safe
-		});
-	});
+	db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
+    db.transaction(
+        function(transaction) {
+            var sql = 
+			"SELECT id_security, sync_key, activation_key " +
+			"FROM   da_security WHERE sync_key IS NOT NULL AND activation_key IS NOT NULL";
+                transaction.executeSql(sql, [], function(tx, results) {
+                    var i_total_records = results.rows.length;
+                    if ( i_total_records === 0 ) {
+                        //No keys exist, the user has not activated their app so redirect them to the activation page
+                        window.location.href="activate.html";
+                        return; //Added just to be safe
+                    }
+                    else {
+                        //Keys exist, the user has activated their app so set the variables and let them continue
+						var authorized_keys = results.rows.item(0);
+                        authorize_key_sync = authorized_keys.sync_key;
+						authorize_key_activation = authorized_keys.activation_key;;
+                    }
+                });
+        }, transactionError
+    );
 };
 
 function func_alert_the_guard(act_key) {
@@ -87,7 +71,3 @@ function func_alert_the_guard(act_key) {
 	*/
 	
 };
-
-function transactionError() {
-    
-}

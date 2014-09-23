@@ -3,10 +3,11 @@ var api_key = 'ad37743918e82143d5c18f072e932d4f';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-/*
-* Initialize database information when app is ready for it
-*/
 function onDeviceReady() {
+    //Check to make sure this is a registered app
+    func_too_legit();
+    
+    //If passed check, continue
     db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
 }
 
