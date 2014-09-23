@@ -41,16 +41,17 @@ function populateRoomDetailsHtml(tx, results) {
         
         alert("title: " + image_title);
         alert("description: " + image_description);
+        alert("image: " + image_path);
         
         if ( image_title ) {
             $("#room_title").append('<h3 style="text-align: center;">' + unescape(image_title) + '</h3>');
         }
-        else if ( image_description ) {
+        if ( image_description ) {
             $("#room_description").append(unescape(image_description));
         }
-        else {
-            html_to_append = html_to_append + '<li><img src="file:///storage/sdcard0/casvaw/tours/' + id_shelter + '/' + image_path + '"></li>';
-        }
+        
+        html_to_append = html_to_append + '<li><img src="file:///storage/sdcard0/casvaw/tours/' + id_shelter + '/' + image_path + '"></li>';
+        
     }
     
     $("#carousel_ul").append(html_to_append);
