@@ -141,7 +141,13 @@ function sync_push(tblname, action, callback) {
             var str_values = '(';
             $.each(this, function(key, value) {
                 str_fields = str_fields + key + ",";
-                str_values = str_values + "'" + escape(value) + "',";
+				if ( !value ) {
+					str_values = str_values + "NULL,";
+				}
+				else {
+					str_values = str_values + "'" + escape(value) + "',";
+				}
+                
             });
             str_fields = str_fields.substring(0, str_fields.length - 1) + ")";
             str_values = str_values.substring(0, str_values.length - 1) + ")";
