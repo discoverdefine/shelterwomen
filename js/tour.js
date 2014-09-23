@@ -29,7 +29,7 @@ function populateTourRoomsHtml(tx, results) {
     id_shelter = tour.id_shelter;
         
     $("#content").empty();
-    $("#content").append('<h3>' + unescape(tour.shelter_name) + '</h3>');
+    $("#content").append('<h3 style="text-align: center;">' + unescape(tour.shelter_name) + '</h3>');
     
     db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
     //Grab title
@@ -53,10 +53,7 @@ function populateTourRoomsHtml(tx, results) {
                     id_shelter = tourimage.id_shelter;
                     id_set = tourimage.id_set;
                     
-                    html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false" data-role="button">' + image_title + '</a>';
-                    
-                    alert(html_to_append);
-                    
+                    html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false" data-role="button">' + unescape(image_title) + '</a>';
                     html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false"><img class="popphoto" src="file:///storage/sdcard0/casvaw/tours/' + id_shelter + '/' + image_path + '" style="width: 100%; height: auto;"></a><br><br>';
 
                     $("#content").append(html_to_append).trigger('create');
