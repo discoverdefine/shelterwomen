@@ -45,6 +45,8 @@ function createToursTables() {
             var sql = "CREATE TABLE IF NOT EXISTS da_shelter_images (" +
                                 "id_image INTEGER,"+
                                 "image_path VARCHAR(255),"+
+                                "image_title VARCHAR(255),"+
+                                "image_description TEXT,"+
                                 "id_shelter INTEGER,"+
                                 "is_default INTEGER,"+
                                 "id_set INTEGER"+

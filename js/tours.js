@@ -3,7 +3,9 @@ var db;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    populateToursListview();
+    func_too_legit();
+    
+	populateToursListview();
 }
 
 function getShelters_success(tx, results) {

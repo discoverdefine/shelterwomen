@@ -3,6 +3,7 @@ var db;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+    func_too_legit();
     
 }
 
@@ -26,6 +27,8 @@ function populateRoomDetails(id_set, id_shelter) {
 
 function populateRoomDetailsHtml(tx, results) {
     var len = results.rows.length;
+    var image_title;
+    var image_description;
     
     for (var i = 0; i < len; i++) {
         html_to_append = '';
@@ -33,6 +36,8 @@ function populateRoomDetailsHtml(tx, results) {
 
         id_image = roomimage.id_image;
         image_path = roomimage.image_path;
+        if ( image_title == "" ) image_title = roomimage.image_title;
+        if ( image_description == "" ) image_description = roomimage.image_description;
         id_shelter = roomimage.id_shelter;
         id_set = roomimage.id_set;
 
@@ -40,7 +45,13 @@ function populateRoomDetailsHtml(tx, results) {
         $("#carousel_ul").append(html_to_append);    
     }
     
-    html_room_to_append = '<a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-right">Return to Tour List</a>';
+    html_room_title_to_append = image_title;
+    $("#room_title").append(html_room_title_to_append);
+    
+    html_room_description_to_append = image_description;
+    $("#room_description").append(html_room_description_to_append);
+    
+    html_room_to_append = '<a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Return to Tour List</a>';
     $("#room_back").append(html_room_to_append);
     
     //$("#carousel").page();

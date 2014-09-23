@@ -3,6 +3,7 @@ var db;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+    func_too_legit();
     
 }
 
@@ -45,10 +46,11 @@ function populateTourRoomsHtml(tx, results) {
                     
                     id_image = tourimage.id_image;
                     image_path = tourimage.image_path;
+                    image_title = tourimage.image_title;
                     id_shelter = tourimage.id_shelter;
                     id_set = tourimage.id_set;
                     
-                    html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false" data-role="button">Tour ' + id_set + '</a>';
+                    html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false" data-role="button">' + image_title + '</a>';
                     html_to_append = html_to_append + '<a href="room.html?id_set=' + id_set + '&id_shelter=' + id_shelter + '" data-ajax="false"><img class="popphoto" src="file:///storage/sdcard0/casvaw/tours/' + id_shelter + '/' + image_path + '" style="width: 100%; height: auto;"></a><br><br>';
 
                     $("#content").append(html_to_append).trigger('create');
