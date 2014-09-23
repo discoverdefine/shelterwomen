@@ -62,7 +62,7 @@ function getActive() {
 		});
 	}		
 	else {
-		alert('Please fill all necessary fields');
+		alert('All fields required');
 	}
 	
 	return false; // cancel original event to prevent form submitting		

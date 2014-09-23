@@ -38,7 +38,7 @@ function getLogin() {
 		
 	}		
 	else {
-		alert('Please enter your access key');
+		alert('Access code required');
 	}
 	
 	return false; // cancel original event to prevent form submitting		
