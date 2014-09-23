@@ -45,7 +45,7 @@ function getActive() {
 			//a_activate_response = json_decode(activate_response, true);
 			//b_is_array = a_activate_response.isArray();
 			
-			alert("Response: " + response.sync_key);
+			alert("Response: " + data.sync_key);
 			
 			//if ( response.status == true ) {
 			
