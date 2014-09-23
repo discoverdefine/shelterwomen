@@ -42,9 +42,14 @@ function getActive() {
 		
 		.done( function(activate_response) {
 			
-			if ( !empty(activate_response) ) {
+			a_activate_response = json_decode(activate_response);
+			b_is_array = a_activate_response.isArray();
 			
-			alert('Got a response');
+			if ( b_is_array ) {
+			
+			//if ( !empty(activate_response) ) {
+			
+			alert('Got a response!');
 			
 				//a_activate_response = json_decode(activate_response, true); // decode
 			
