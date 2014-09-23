@@ -32,9 +32,11 @@ function populateTourRoomsHtml(tx, results) {
     $("#content").append('<h3>' + unescape(tour.shelter_name) + '</h3>');
     
     db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
+    //Grab title
     db.transaction(
         function(transaction) {
-            transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default <> 1 GROUP BY id_set", [], function(tx, results) {
+            //transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default <> 1 GROUP BY id_set", [], function(tx, results) {
+            transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default <> 1 AND image_title IS NOT NULL GROUP BY id_set ORDER BY id_set", [], function(tx, results) {
                 var len = results.rows.length;
                 
                 // First populate the main images in #div_tour_details

@@ -36,8 +36,8 @@ function populateRoomDetailsHtml(tx, results) {
 
         id_image = roomimage.id_image;
         image_path = roomimage.image_path;
-        if ( image_title == "" ) image_title = roomimage.image_title;
-        if ( image_description == "" ) image_description = roomimage.image_description;
+        if ( image_title.length < 1 ) image_title = roomimage.image_title;
+        if ( image_description.length < 1 ) image_description = roomimage.image_description;
         id_shelter = roomimage.id_shelter;
         id_set = roomimage.id_set;
 
