@@ -1,6 +1,8 @@
 window.addEventListener('load', onWindowLoaded, false);
 document.addEventListener('deviceready', onDeviceReady, false);
 
+var b_check_login = true;
+
 function onWindowLoaded() {
     createSecurityTable();
     createToursTables();
@@ -9,11 +11,6 @@ function onWindowLoaded() {
     //Check to make sure this is a registered app
     func_too_legit();
     
-    //App has been registered but the app has just been launched so the user needs to log in
-    window.location.href="login.html";
-    return; //Added just to be safe
-    
-    //checkActive();
 }
 
 function onDeviceReady() {

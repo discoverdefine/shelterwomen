@@ -27,7 +27,14 @@ function func_too_legit() {
                         //Keys exist, the user has activated their app so set the variables and let them continue
 						var authorized_keys = results.rows.item(0);
                         authorize_key_sync = authorized_keys.sync_key;
-						authorize_key_activation = authorized_keys.activation_key;;
+						authorize_key_activation = authorized_keys.activation_key;
+						
+						if ( b_check_login ) {
+							//App has been registered but the app has just been launched so the user needs to log in
+							window.location.href="login.html";
+							return; //Added just to be safe
+						}
+						
                     }
                 });
         }, transactionError
