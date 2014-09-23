@@ -42,7 +42,7 @@ function getActive() {
 		
 		.done( function(activate_response) {
 			
-			//if ( !empty(activate_response) ) {
+			if ( !empty(activate_response) ) {
 			
 			alert('Got a response');
 			
@@ -55,10 +55,10 @@ function getActive() {
 				//if ( data.status ) {
 					//alert(data.sync_key);
 					//alert(data.activation_key);
-			//}
-			//else {
-			//	alert("Activation failed");
-			//}
+			}
+			else {
+				alert("Activation failed");
+			}
 			
 		});
 	}
