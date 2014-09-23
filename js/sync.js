@@ -107,7 +107,9 @@ function sync_push(tblname, action, callback) {
             str_values = str_values.substring(0, str_values.length - 1) + ")";
 
             var str_query = "INSERT INTO " + tblname + " " + str_fields + " VALUES " + str_values + "";
-
+			
+			if ( tblname == "da_shelter_images" ) alert(str_query);
+			
             db.transaction(
                 function (transaction) {
                     transaction.executeSql(str_query);
