@@ -27,7 +27,7 @@ function populateRoomDetails(id_set, id_shelter) {
 function populateRoomDetailsHtml(tx, results) {
     var len = results.rows.length;
     html_to_append = '';
-    alert("records: " + len);
+    
     for (var i = 0; i < len; i++) {
         var roomimage = results.rows.item(i);
 

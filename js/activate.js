@@ -11,12 +11,9 @@ function onDeviceReady() {
 }
 
 function getActive() {
-	//alert('Submitting form...');
-	
 	v_email = $('#email').val();
 	v_sync_key = $('#sync_key').val();
 	
-	//if ( $('#email').val().length > 0 && $('#sync_key').val().length > 0 ) {
 	if ( v_email.length > 0 && v_sync_key.length > 0 ) {
 		// Send data to server through the ajax call
 		// action is functionality we want to call and outputJSON is our data
@@ -40,8 +37,6 @@ function getActive() {
 		.done( function(data) {
 			
 			if ( data.status == true ) {
-				
-				//alert("Response: " + data.sync_key);
 				
 				var str_query = "INSERT INTO da_security (sync_key, activation_key) VALUES ('" + escape(data.sync_key) + "', '" + escape(data.activation_key) + "')";
 				db.transaction(
@@ -68,8 +63,6 @@ function getActive() {
 	return false; // cancel original event to prevent form submitting		
 	
 }
-
-
 
 function transactionError() {
     

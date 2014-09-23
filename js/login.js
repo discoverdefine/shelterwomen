@@ -10,8 +10,6 @@ function onDeviceReady() {
 }
 
 function getLogin() {
-	//alert('Submitting form...');
-	
 	v_sync_key = $('#sync_key').val();
 	
 	if ( v_sync_key.length > 0 ) {
@@ -44,8 +42,6 @@ function getLogin() {
 	return false; // cancel original event to prevent form submitting		
 	
 }
-
-
 
 function transactionError() {
     

@@ -4,8 +4,7 @@ var authorize_key_sync;
 var authorize_key_activation;
 
 function onDeviceReady() {
-	//alert("Alert the guard!");
-    //func_too_legit();
+	//func_too_legit();
 }
 
 //Checks to see if activation key has been saved locally and if so, retrieves it, otherwise redirects to activation screen
@@ -69,7 +68,6 @@ function func_alert_the_guard() {
 				sync_listings_start();
 			}
 			else {
-				//alert("Activation failed");
 				//User's credentials fail so clear their local credentials and send them to the activate page
 				var str_query = "DELETE FROM da_security";
 				db.transaction(
