@@ -78,7 +78,47 @@ function sync_shelter_photos() {
 	
 	//alert("Sync room photos...");
 	
-    sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
+    //sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
+	sync_push('da_shelter_images', 'getshelterimages', shelter_photos_cleanup);
+}
+
+
+/*
+* Change any newly imported 'null' fields to null
+*/
+function shelter_photos_cleanup() {
+	//Clean up image_title
+	var str_query = "UPDATE da_shelter_images SET image_title = NULL WHERE image_title = 'null'";
+	db.transaction(
+		function (transaction) {
+			transaction.executeSql(str_query);
+		}, function () {
+			//Successful
+			
+		},
+		function () {
+			//Failed
+			
+		}
+	);
+	//Clean up image_description
+	var str_query = "UPDATE da_shelter_images SET image_description = NULL WHERE image_description = 'null'";
+	db.transaction(
+		function (transaction) {
+			transaction.executeSql(str_query);
+		}, function () {
+			//Successful
+			
+		},
+		function () {
+			//Failed
+			
+		}
+	);
+	
+	//Proceed to directory structure and files
+	root_directory_structure();
+	
 }
 
 /*
@@ -108,7 +148,7 @@ function sync_push(tblname, action, callback) {
 
             var str_query = "INSERT INTO " + tblname + " " + str_fields + " VALUES " + str_values + "";
 			
-			if ( tblname == "da_shelter_images" ) alert(str_query);
+			//if ( tblname == "da_shelter_images" ) alert(str_query);
 			
             db.transaction(
                 function (transaction) {
