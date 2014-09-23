@@ -38,7 +38,7 @@ function populateTourRoomsHtml(tx, results) {
             //transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default <> 1 GROUP BY id_set", [], function(tx, results) {
             transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default IS NULL AND image_title IS NOT NULL GROUP BY id_set", [], function(tx, results) {
                 var len = results.rows.length;
-                
+                alert("Records: " + len);
                 // First populate the main images in #div_tour_details
                 id_shelter_already_displayed = false;
 
@@ -58,7 +58,9 @@ function populateTourRoomsHtml(tx, results) {
                     $("#content").append(html_to_append).trigger('create');
                 }
             });
-        }, transactionError
+        }, function () {
+            alert("Unable to select rooms");
+        }
     );
 }
 
