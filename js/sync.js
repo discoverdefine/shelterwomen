@@ -155,7 +155,6 @@ function sync_push(tblname, action, callback) {
             var str_query = "INSERT INTO " + tblname + " " + str_fields + " VALUES " + str_values + "";
 			
 			//if ( tblname == "da_service" ) alert(str_query);
-			alert(str_query);
 			
             db.transaction(
                 function (transaction) {
