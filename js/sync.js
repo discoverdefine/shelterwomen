@@ -84,44 +84,6 @@ function sync_shelter_photos() {
 
 
 /*
-* Change any newly imported 'null' fields to null
-*/
-function shelter_photos_cleanup() {
-	//Clean up image_title
-	var str_query = "UPDATE da_shelter_images SET image_title = NULL WHERE image_title = 'null'";
-	db.transaction(
-		function (transaction) {
-			transaction.executeSql(str_query);
-		}, function () {
-			//Successful
-			
-		},
-		function () {
-			//Failed
-			
-		}
-	);
-	//Clean up image_description
-	var str_query = "UPDATE da_shelter_images SET image_description = NULL WHERE image_description = 'null'";
-	db.transaction(
-		function (transaction) {
-			transaction.executeSql(str_query);
-		}, function () {
-			//Successful
-			
-		},
-		function () {
-			//Failed
-			
-		}
-	);
-	
-	//Proceed to directory structure and files
-	root_directory_structure();
-	
-}
-
-/*
 * Function for grabbing data from server and storing it in local database
 */
 function sync_push(tblname, action, callback) {
