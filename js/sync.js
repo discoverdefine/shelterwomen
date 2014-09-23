@@ -141,11 +141,11 @@ function sync_push(tblname, action, callback) {
             var str_values = '(';
             $.each(this, function(key, value) {
                 str_fields = str_fields + key + ",";
-				if ( value.length > 0 ) {
-					str_values = str_values + "'" + escape(value) + "',";
+				if ( value == "" ) {
+					str_values = str_values + "NULL,";
 				}
 				else {
-					str_values = str_values + "NULL,";
+					str_values = str_values + "'" + escape(value) + "',";
 				}
                 
             });
