@@ -8,6 +8,7 @@ function onWindowLoaded() {
     
     //Check to make sure this is a registered app
     func_too_legit();
+    
     //App has been registered but the app has just been launched so the user needs to log in
     window.location.href="login.html";
     return; //Added just to be safe
