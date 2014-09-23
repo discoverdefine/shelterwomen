@@ -22,7 +22,12 @@ $(document).on('pageinit', function(){
 	*/
     $('#btnsync').click(function() {
     	document.getElementById('photo_download_progress').style.display = "block";
-	    sync_listings_start();
+	    
+		
+		//sync_listings_start();
+		func_alert_the_guard();
+		
+		
     });
 });
 

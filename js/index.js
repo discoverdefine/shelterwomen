@@ -1,7 +1,7 @@
 window.addEventListener('load', onWindowLoaded, false);
 document.addEventListener('deviceready', onDeviceReady, false);
 
-var b_check_login = true;
+var b_check_login = "true";
 
 function onWindowLoaded() {
     createSecurityTable();

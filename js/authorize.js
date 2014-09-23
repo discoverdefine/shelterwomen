@@ -29,7 +29,7 @@ function func_too_legit() {
                         authorize_key_sync = authorized_keys.sync_key;
 						authorize_key_activation = authorized_keys.activation_key;
 						
-						if ( b_check_login ) {
+						if ( b_check_login == "true" ) {
 							//App has been registered but the app has just been launched so the user needs to log in
 							window.location.href="login.html";
 							return; //Added just to be safe
@@ -41,40 +41,55 @@ function func_too_legit() {
     );
 };
 
-function func_alert_the_guard(act_key) {
-	alert("Woke the guard...");
-	
-	//act_key = "f84868ae448b0e0b558e4c46a195a76b";
-	
-	var request = $.ajax({
-		url: "https://shelterforwomen.ca/admin/api.php",
-		type: "POST",
-		data: { action: "validate", key: api_key, activation_key: act_key },
-		dataType: "text"
-	});
-	
-	request.done(function( msg ) {
-		alert("Response: " + msg);
-	});
-	
-	request.fail(function( jqXHR, textStatus ) {
-		alert( "Request failed: " + textStatus );
-	});
-	
-	//tmp_data = "action=validate&key=" + api_key + "&activation_key=" + activation_key;
-	//tmp_data = { action:"validate", key: api_key, activation_key: activation_key };
-    /*
-	$.post(
-        tmp_url,
-		{
-			action: "validate",
-			key: api_key,
-			activation_key: act_key
-		},
-		function(response) {
-			alert("Response: " + response);
-		}
-	);
-	*/
-	
+function func_alert_the_guard() {
+	if ( authorize_key_sync.length > 0 && authorize_key_activation.length > 0 ) {
+		// Send data to server through the ajax call
+		// action is functionality we want to call and outputJSON is our data
+		$.ajax({
+			url: 'https://shelterforwomen.ca/admin/api.php?action=validate&key=' + api_key + '&sync_key=' + authorize_key_sync + '&activation_key=' + authorize_key_activation,
+			async: 'true',
+			
+			type : "GET",
+			dataType: 'json',
+			
+			beforeSend: function() {
+				// This callback function will trigger before data is sent
+				//$.mobile.loading("show"); // This will show ajax spinner
+			},
+			complete: function() {
+				// This callback function will trigger on data sent/received complete
+				//$.mobile.loading("hide"); // This will hide ajax spinner
+			}
+		})
+		
+		.done( function(data) {
+			
+			if ( data.status == true ) {
+				//User's credentials pass so let them sync up
+				sync_listings_start();
+			}
+			else {
+				//alert("Activation failed");
+				//User's credentials fail so clear their local credentials and send them to the activate page
+				var str_query = "DELETE FROM da_security";
+				db.transaction(
+					function (transaction) {
+						transaction.executeSql(str_query);
+					}, function () {
+						//Deactivation failed so we need to handle it somehow - clunky for now
+						window.location.href="directory.html";
+					},
+					function () {
+						//User has been successfully deactivated so send them to the activate page
+						window.location.href="activate.html";
+					}
+				);
+			}
+			
+		});
+	}		
+	else {
+		alert('Please fill all necessary fields');
+	}
+		
 };
