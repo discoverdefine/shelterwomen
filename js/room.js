@@ -43,10 +43,10 @@ function populateRoomDetailsHtml(tx, results) {
         alert("description: " + image_description);
         alert("image: " + image_path);
         
-        if ( image_title ) {
+        if ( image_title && image_title != 'null' ) {
             $("#room_title").append('<h3 style="text-align: center;">' + unescape(image_title) + '</h3>');
         }
-        if ( image_description ) {
+        if ( image_description && image_description != 'null' ) {
             $("#room_description").append(unescape(image_description));
         }
         
