@@ -78,31 +78,6 @@ function createDirectoryTables() {
     );
 }
 
-function checkActive() {
-    db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
-    db.transaction(
-        function(transaction) {
-            var sql = 
-		"SELECT id_security " +
-		"FROM   da_security WHERE sync_key IS NOT NULL AND activation_key IS NOT NULL";
-                transaction.executeSql(sql, [], function(tx, results) {
-                    var i_total_records = results.rows.length;
-                    if ( i_total_records === 0 ) {
-                        //No keys exist, the user has not activated their app so redirect them to the activation page
-                        window.location.href="activate.html";
-                        return; //Added just to be safe
-                    }
-                    else {
-                        //Keys exist, the user has activated their app so redirect them to the login page
-                        window.location.href="login.html";
-                        return; //Added just to be safe
-                    }
-                });
-        }, transactionError
-    );
-}
- 
-
 function transactionError() {
     
 }

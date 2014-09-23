@@ -271,7 +271,7 @@ function download_file(tx, results) {
         $.mobile.loading("hide");
         //Exit function and finish everything
         //Send user to directory screen
-        window.location.href="index.html";
+        window.location.href="directory.html";
         return; //Added just to be safe
     }
     //Grab the last record in the array
