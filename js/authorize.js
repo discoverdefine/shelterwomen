@@ -4,8 +4,8 @@ var api_key = 'ad37743918e82143d5c18f072e932d4f';
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	alert("Alert the guard!");
-    func_too_legit();
+	//alert("Alert the guard!");
+    //func_too_legit();
 }
 
 function set_root_directory() {	

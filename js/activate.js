@@ -6,6 +6,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	
 	$('#btnActivate').bind('click',getActive);
+	db = window.openDatabase("CasVaw", "1.0", "CasVaw DB", 8000000);
 	
 }
 
@@ -17,10 +18,6 @@ function getActive() {
 	
 	//if ( $('#email').val().length > 0 && $('#sync_key').val().length > 0 ) {
 	if ( v_email.length > 0 && v_sync_key.length > 0 ) {
-		
-	//alert('Email: ' + v_email);
-	//alert('Sync Key: ' + v_sync_key);
-		
 		// Send data to server through the ajax call
 		// action is functionality we want to call and outputJSON is our data
 		$.ajax({
@@ -42,59 +39,28 @@ function getActive() {
 		
 		.done( function(data) {
 			
-			//a_activate_response = json_decode(activate_response, true);
-			//b_is_array = a_activate_response.isArray();
-			
-			alert("Response: " + data.sync_key);
-			
-			//if ( response.status == true ) {
-			
-			//if ( !empty(activate_response) ) {
-			
-				alert('Got a response!');
-			
-			//alert("Is array: " + b_is_array);
-			
-				//if ( data.status ) {
-					//alert(data.sync_key);
-					//alert(data.activation_key);
-			//}
-			//else {
-			//	alert("Activation failed");
-			//}
-			
-		});
-	}
-		
-			/*
-			beforeSend: function() {
-				// This callback function will trigger before data is sent
-				$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
-			},
-			complete: function() {
-				// This callback function will trigger on data sent/received complete
-				$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
-			},
-			success: function (result) {
+			if ( data.status == true ) {
 				
+				//alert("Response: " + data.sync_key);
 				
-				if ( result.status ) {
-	
-					alert('We have contact...');
-	
-				}
-				else {
-					alert('Activation failed');
-				}
+				var str_query = "INSERT INTO da_security (sync_key, activation_key) VALUES ('" + escape(data.sync_key) + "', '" + escape(data.activation_key) + "')";
+				db.transaction(
+					function (transaction) {
+						transaction.executeSql(str_query);
+					}, transactionError,
+					function () {
+						//User has been successfully activated so send them to the directory page
+						window.location.href="directory.html";
+					}
+				);
 				
-			},
-			error: function (request,error) {
-				// This callback function will trigger on unsuccessful action               
-				alert('Network error has occurred please try again!');
 			}
+			else {
+				alert("Activation failed");
+			}
+			
 		});
-		*/
-		
+	}		
 	else {
 		alert('Please fill all necessary fields');
 	}
