@@ -29,7 +29,6 @@ function populateRoomDetails_Title(id_set, id_shelter) {
 function populateRoomDetails_TitleHtml(tx, results) {
     if ( results.rows.length > 0 ) {
     
-        html_to_append = '';
         var roomimage = results.rows.item(0);
 
         id_shelter = roomimage.id_shelter;
@@ -37,11 +36,8 @@ function populateRoomDetails_TitleHtml(tx, results) {
         image_title = roomimage.image_title;
         image_description = roomimage.image_description;
         
-        html_room_title_to_append = image_title;
-        $("#room_title").append(html_room_title_to_append);
-        
-        html_room_description_to_append = image_description;
-        $("#room_description").append(html_room_description_to_append);
+        $("#room_title").append(unescape(image_title));
+        $("#room_description").append(unescape(image_description));
             
         html_room_to_append = '<a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Return to Tour List</a>';
         $("#room_back").append(html_room_to_append);
