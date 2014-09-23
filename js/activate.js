@@ -40,7 +40,7 @@ function getActive() {
 			}
 		})
 		
-		.done( function(response) {
+		.done( function(data) {
 			
 			//a_activate_response = json_decode(activate_response, true);
 			//b_is_array = a_activate_response.isArray();
