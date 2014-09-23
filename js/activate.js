@@ -40,32 +40,28 @@ function getActive() {
 			}
 		})
 		
-		.done( function(activate_response) {
+		.done( function(response) {
 			
 			//a_activate_response = json_decode(activate_response, true);
 			//b_is_array = a_activate_response.isArray();
 			
-			alert("Response: " + activate_response);
+			alert("Response: " + response.sync_key);
 			
-			if ( activate_response.status == true ) {
+			//if ( response.status == true ) {
 			
 			//if ( !empty(activate_response) ) {
 			
 				alert('Got a response!');
-			
-				//a_activate_response = json_decode(activate_response, true); // decode
-			
-				//b_is_array = a_activate_response.isArray();
 			
 			//alert("Is array: " + b_is_array);
 			
 				//if ( data.status ) {
 					//alert(data.sync_key);
 					//alert(data.activation_key);
-			}
-			else {
-				alert("Activation failed");
-			}
+			//}
+			//else {
+			//	alert("Activation failed");
+			//}
 			
 		});
 	}
