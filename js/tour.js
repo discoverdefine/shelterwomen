@@ -36,8 +36,8 @@ function populateTourRoomsHtml(tx, results) {
     db.transaction(
         function(transaction) {
             //transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND is_default <> 1 GROUP BY id_set", [], function(tx, results) {
-            //transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND image_title IS NOT NULL AND image_title <> '' GROUP BY id_set", [], function(tx, results) {
-            transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND (image_path = 'c1.jpg' OR image_path = 'c2.jpg' OR image_path = 'c3.jpg' OR image_path = 'c4.jpg')", [], function(tx, results) {
+            transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND image_title IS NOT NULL AND image_title <> 'null' GROUP BY id_set", [], function(tx, results) {
+            //transaction.executeSql("SELECT * FROM da_shelter_images WHERE id_shelter = " + id_shelter + " AND (image_path = 'c1.jpg' OR image_path = 'c2.jpg' OR image_path = 'c3.jpg' OR image_path = 'c4.jpg')", [], function(tx, results) {
                 var len = results.rows.length;
                 //alert("Records: " + len);
                 // First populate the main images in #div_tour_details

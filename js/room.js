@@ -1,5 +1,4 @@
 var db;
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -38,10 +37,6 @@ function populateRoomDetailsHtml(tx, results) {
         image_description = roomimage.image_description;
         id_shelter = roomimage.id_shelter;
         id_set = roomimage.id_set;
-        
-        alert("title: " + image_title);
-        alert("description: " + image_description);
-        alert("image: " + image_path);
         
         if ( image_title && image_title != 'null' ) {
             $("#room_title").append('<h3 style="text-align: center;">' + unescape(image_title) + '</h3>');
