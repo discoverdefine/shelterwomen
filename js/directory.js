@@ -13,8 +13,7 @@ function populateDirectoryListview() {
     db.transaction(
         function(transaction) {
             var sql = 
-		"SELECT id_service, name_service, address " +
-		"FROM   da_service";
+		"SELECT id_service, name_service, address FROM da_service ORDER BY name_service ASC";
                 transaction.executeSql(sql, [], getListings_success);
         }, transactionError
     );
