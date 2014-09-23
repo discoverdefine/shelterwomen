@@ -36,7 +36,7 @@ function populateRoomDetails_TitleHtml(tx, results) {
         image_title = roomimage.image_title;
         image_description = roomimage.image_description;
         
-        $("#room_title").append(unescape(image_title));
+        $("#room_title").append('<h3 style="text-align: center;">' + unescape(image_title) + '</h3>');
         $("#room_description").append(unescape(image_description));
             
         html_room_to_append = '<a href="#" data-role="button" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Return to Tour List</a>';

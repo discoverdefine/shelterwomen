@@ -79,7 +79,7 @@ function sync_shelter_photos() {
 	//alert("Sync room photos...");
 	
     //sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
-	sync_push('da_shelter_images', 'getshelterimages', shelter_photos_cleanup);
+	sync_push('da_shelter_images', 'getshelterimages', root_directory_structure);
 }
 
 
@@ -141,11 +141,11 @@ function sync_push(tblname, action, callback) {
             var str_values = '(';
             $.each(this, function(key, value) {
                 str_fields = str_fields + key + ",";
-				if ( !value ) {
-					str_values = str_values + "NULL,";
+				if ( value.length > 0 ) {
+					str_values = str_values + "'" + escape(value) + "',";
 				}
 				else {
-					str_values = str_values + "'" + escape(value) + "',";
+					str_values = str_values + "NULL,";
 				}
                 
             });
@@ -154,7 +154,7 @@ function sync_push(tblname, action, callback) {
 
             var str_query = "INSERT INTO " + tblname + " " + str_fields + " VALUES " + str_values + "";
 			
-			//if ( tblname == "da_shelter_images" ) alert(str_query);
+			if ( tblname == "da_service" ) alert(str_query);
 			
             db.transaction(
                 function (transaction) {
